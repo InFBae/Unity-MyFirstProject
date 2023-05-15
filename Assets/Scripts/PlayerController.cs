@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection;
     private Rigidbody rb;
 
-    [SerializeField]
-    private int moveSpeed;
-    [SerializeField]
-    private int jumpPower;
+    [SerializeField] private int moveSpeed;
+    [SerializeField] private int jumpPower;
+    [Header("Shooter")]
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPoint;
+    [SerializeField] private float repeatTime;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,5 +43,32 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+    }
+
+    private Coroutine bulletRoutine;
+    private void OnFire(InputValue inputValue)
+    {
+        Instantiate(bulletPrefab, bulletPoint.transform.position, bulletPoint.transform.rotation);
+    }
+
+    IEnumerator BulletMakeRoutine()
+    {
+        while (true)
+        {
+            Instantiate(bulletPrefab, bulletPoint.transform.position, bulletPoint.transform.rotation);
+            yield return new WaitForSeconds(repeatTime);
+        }
+    }
+
+    private void OnRepeatFire(InputValue inputValue)
+    {
+        if (inputValue.isPressed)
+        {
+            bulletRoutine = StartCoroutine(BulletMakeRoutine());
+        }
+        else
+        {
+            StopCoroutine(bulletRoutine);
+        }
     }
 }
