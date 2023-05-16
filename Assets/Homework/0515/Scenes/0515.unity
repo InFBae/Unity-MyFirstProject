@@ -274,6 +274,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &763536533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6897765701010614591, guid: 196d80d1f9fd9314e92e54ee0b43bd8b, type: 3}
+  m_PrefabInstance: {fileID: 6897765699878873648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &792307564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -446,10 +451,14 @@ PrefabInstance:
     - target: {fileID: 6897765699379088609, guid: 196d80d1f9fd9314e92e54ee0b43bd8b, type: 3}
       propertyPath: turretHead
       value: 
+      objectReference: {fileID: 763536533}
+    - target: {fileID: 6897765699379088609, guid: 196d80d1f9fd9314e92e54ee0b43bd8b, type: 3}
+      propertyPath: muzzlePoint
+      value: 
       objectReference: {fileID: 1293469366}
     - target: {fileID: 6897765699379088609, guid: 196d80d1f9fd9314e92e54ee0b43bd8b, type: 3}
       propertyPath: bulletCoolTime
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6897765701010584791, guid: 196d80d1f9fd9314e92e54ee0b43bd8b, type: 3}
       propertyPath: m_RootOrder

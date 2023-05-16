@@ -64,6 +64,10 @@ public class PlayerController : MonoBehaviour
     {
         if (inputValue.isPressed)
         {
+            if(bulletRoutine != null)
+            {
+                StopCoroutine(bulletRoutine);
+            }
             bulletRoutine = StartCoroutine(BulletMakeRoutine());
         }
         else

@@ -4,10 +4,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
+using Cinemachine;
 
-public class TankController_0515 : MonoBehaviour
+public class TankController_0516 : MonoBehaviour
 {
     private Rigidbody rb;
+    private AudioSource shotFiringSound;
     private Vector3 direction;
     private Vector2 inputDirection;
     private float turretDir;
@@ -15,14 +17,18 @@ public class TankController_0515 : MonoBehaviour
     [SerializeField] private int moveSpeed = 2;
     [SerializeField] private int rotateSpeed = 90;
 
+   
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject turretHead;
     [SerializeField] private GameObject muzzlePoint;
     [SerializeField] private float bulletCoolTime;
 
+    [SerializeField] private CinemachineVirtualCamera povCamera;
+
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();   
+        shotFiringSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -52,6 +58,7 @@ public class TankController_0515 : MonoBehaviour
     private void OnFire(InputValue inputValue)
     {
         Instantiate(bullet, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
+        shotFiringSound.Play();
     }
 
     private void OnTurretRotate(InputValue inputValue)
@@ -78,13 +85,26 @@ public class TankController_0515 : MonoBehaviour
             StopCoroutine(bulletRepeatCoroutine);
         }
     }
-
     IEnumerator BulletRepeatRoutine()
     {
         while (true)
         {            
             yield return new WaitForSeconds(bulletCoolTime);
             Instantiate(bullet, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
+            shotFiringSound.Play();
         }
     }
+
+    private void OnChangeView(InputValue inputValue)
+    {
+        if (inputValue.isPressed)
+        {
+            povCamera.Priority += 10;
+        }
+        else
+        {
+            povCamera.Priority -= 10;
+        }
+    }
+
 }

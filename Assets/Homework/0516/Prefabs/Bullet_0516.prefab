@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 7000015375313046317}
   - component: {fileID: 7000015375313046316}
   - component: {fileID: 7000015375313046315}
-  - component: {fileID: 5051696555840587009}
-  - component: {fileID: -9218896427837294803}
-  m_Layer: 7
-  m_Name: Bullet
+  - component: {fileID: 8435607027579846716}
+  - component: {fileID: 7028651361104059441}
+  m_Layer: 0
+  m_Name: Bullet_0516
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   explosionEffect: {fileID: 195792, guid: 89e78efe92dfe5a42837b392cdb0bf9e, type: 3}
---- !u!65 &5051696555840587009
-BoxCollider:
+--- !u!64 &8435607027579846716
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,10 +127,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25, z: 0.5}
-  m_Center: {x: 0, y: 0.000000007450581, z: 0.19800001}
---- !u!82 &-9218896427837294803
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 9ed1e8a25f964bd4298944675e425a0d, type: 3}
+--- !u!82 &7028651361104059441
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,9 +140,9 @@ AudioSource:
   m_GameObject: {fileID: 7000015375314982381}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6349201675508780537, guid: 67682da3d1d99b042bd00f7419e5dcdd, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3a77defcde1caaa40b6f7502547e0c4e, type: 3}
-  m_PlayOnAwake: 0
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -186,7 +187,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

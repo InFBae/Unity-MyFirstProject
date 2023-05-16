@@ -14,8 +14,8 @@ public class UnityTransform : MonoBehaviour
 	 ************************************************************************/
 
     private Vector3 direction;
-    float moveSpeed = 3;
-    float rotateSpeed = 90;
+    [SerializeField] float moveSpeed = 3;
+    [SerializeField] float rotateSpeed = 90;
 
     private void Update()
     {
@@ -27,7 +27,12 @@ public class UnityTransform : MonoBehaviour
     private void OnMove(InputValue input)
     {
         direction.x = input.Get<Vector2>().x;
-        direction.z = input.Get<Vector2>().y;
+        if (input.Get<Vector2>().y > 0)
+            direction.z = 1;
+        else if (input.Get<Vector2>().y < 0)
+            direction.z = -1;
+        else
+            direction.z = 0;
     }
 
     // <트랜스폼 이동>
