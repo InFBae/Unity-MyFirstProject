@@ -9,16 +9,16 @@ using Cinemachine;
 public class TankController_0517 : MonoBehaviour
 {
     private Rigidbody rb;
-    private Animator animator;
-    private AudioSource shotFiringSound;
+    private Animator animator;  
+
     private Vector3 direction;
     private Vector2 inputDirection;
     private float turretDir;
 
-    [SerializeField] private int moveSpeed = 2;
+    [SerializeField] private int moveSpeed = 3;
     [SerializeField] private int rotateSpeed = 90;
 
-   
+    [SerializeField] private AudioSource shotFiringSound;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject turretHead;
     [SerializeField] private GameObject muzzlePoint;
@@ -29,7 +29,6 @@ public class TankController_0517 : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();   
-        shotFiringSound = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
