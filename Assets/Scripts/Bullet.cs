@@ -9,12 +9,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject explosionEffect;
 
     private Rigidbody rb;
-    private AudioSource bulletExplosionSound;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        bulletExplosionSound = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -26,7 +24,6 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
-        bulletExplosionSound.Play();
         Destroy(gameObject);       
     }
 }
