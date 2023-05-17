@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Vector3 moveDirection;
     private Rigidbody rb;
+    private Animator animator;
 
     [SerializeField] private int moveSpeed;
     [SerializeField] private int jumpPower;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -48,7 +50,13 @@ public class PlayerController : MonoBehaviour
     private Coroutine bulletRoutine;
     private void OnFire(InputValue inputValue)
     {
+        Fire();
+    }
+    
+    public void Fire()
+    {
         Instantiate(bulletPrefab, bulletPoint.transform.position, bulletPoint.transform.rotation);
+        animator.SetTrigger("Fire");
     }
 
     IEnumerator BulletMakeRoutine()
@@ -56,6 +64,7 @@ public class PlayerController : MonoBehaviour
         while (true)
         {
             Instantiate(bulletPrefab, bulletPoint.transform.position, bulletPoint.transform.rotation);
+            animator.SetTrigger("Fire");
             yield return new WaitForSeconds(repeatTime);
         }
     }
