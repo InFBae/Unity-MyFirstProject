@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Homework/0517/Scenes/0517.unity
     guid: 8e5042e6a80c06b42aa1f6283de32a28
+  - enabled: 1
+    path: Assets/Homework/0518/Scenes/0518.unity
+    guid: bd0fd6da7f965fd42a1231d6f4095a5b
   m_configObjects: {}
